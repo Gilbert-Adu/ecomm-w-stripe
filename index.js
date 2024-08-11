@@ -3,8 +3,9 @@ const path = require("path")
 const app = express();
 const ejs = require("ejs");
 
+require('dotenv').config();
 
-const stripe = require('stripe')('sk_test_51PEkXvP0j5CwKC7XEn1nem4CIRrIU49eLrg7jK5uuvF50gbQXDzTNXk1ZMOmOoQpFjTUw5MAWxnn67qv23Zapk9F00YwqWnODw');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
@@ -138,9 +139,9 @@ app.get('/redirect', (req, res) => {
 //checkout
 app.post('/checkout', async (req, res) => {
     
-    const total = parseInt(req.body.price) * parseInt(req.body.quantity);
+    const total = parseInt(req.body.price) * parseInt(req.body.quantity) ;
     const paymentIntent = await stripe.paymentIntents.create({
-        amount: total,
+        amount: total * 100,
         currency: 'usd',
         automatic_payment_methods: {
             enabled: true
