@@ -1,0 +1,250 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <style>
+        /* desktop breakpoint */
+        @media (min-width: 1024px) {
+            .product-container {
+                display: flex;
+                flex-direction: row;
+                margin-top: 5vh;
+                margin-left: 2vw;
+                margin-right: 2vw;
+                height: 80vh;
+                margin-bottom: 5vh;
+            }
+            .product-card-image{
+                width: 50vw;
+                height: 100%;
+                border-radius: 5px;
+
+            }
+            .product-card-image img{
+                width: 50vw;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 5px;
+
+
+            }
+            .product-card-actions{
+                width: 45vw;
+                height: fit-content;
+                margin-left: 5vw;
+
+
+            }
+            .product-title{
+                height: fit-content;
+                font-family: "Inter", sans-serif;
+                font-size: 25px;
+            }
+            .product-desc, .product-avail, .product-colors, .product-quantity, .buy-now{
+                margin-top: 3vh;
+                font-family: "Poppins", sans-serif;
+                font-size: 12px;
+                height: fit-content;
+            }
+            .product-avail {
+                color: #7C00FE;
+                font-weight: bold;
+            }
+            .product-quantity {
+                display: flex;
+                flex-direction: row;
+            }
+            .q-number, .q-plus, .q-minus{
+                margin: 1vh 0;
+                border: 1px solid #ddd;
+                height: 3vh;
+                width: 3vw;
+                text-align: center;
+                padding-top: 1vh;
+
+
+            }
+            .q-plus {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+                background-color: #ddd;
+                margin-right: 0.2vw;
+
+
+            }
+            .q-minus {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+                background-color: #ddd;
+
+
+
+            }
+            .q-number{
+                margin-right: 1vw;
+                border-radius: 5px;
+
+            }
+            
+            .buy-now {
+                height: 5vh;
+                width: 15vw;
+                cursor: pointer;
+                background-color: #3FA2F6;
+                color: white;
+                font-weight: bold;
+                border: 1px solid #3FA2F6;
+                border-radius: 5px;
+            }
+
+            .product-colors {
+                display: flex;
+                flex-direction: row;
+            }
+            .color-1 {
+                background-color: #A02334;
+                border: 1px solid #A02334;
+                height: 1.5vh;
+            }
+            .color-2 {
+                background-color: #399918;
+                border: 1px solid #399918;
+                height: 1.5vh;
+
+            }
+            .color-1, .color-2 {
+                margin: 0 0.1vw;
+                cursor: pointer;
+                width: 1vw;
+                text-align: center;
+                border-radius: 100%;
+                padding: 0.2vh 0.2vw;
+            }
+            .product-cost {
+                font-weight: bold;
+                font-size: 15px;
+                font-family: "Poppins", sans-serif;
+                color: #7C00FE;
+                margin-top: 1vh;
+            }
+            
+
+
+            
+
+            
+        }
+        /* tablet breakpoint */
+        @media (min-width: 768px) and (max-width: 1023px) {}
+
+        /* mobile breakpoint */
+        @media (max-width: 767px) {
+            
+        }
+    </style>
+
+</head>
+
+<div class="product-container">
+    <div class="product-card-image">
+        <img src="<%= product.imageSrc %>" alt="">
+    </div>
+    <div class="product-card-actions">
+        <div class="product-title"><%= product.name %></div>
+        <div class="product-cost">$<%= product.price %> per quantity</div>
+
+        <div class="product-desc"><%= product.desc %></div>
+        <div class="product-avail">100+ in stock</div>
+        <div class="product-colors">
+            <div class="color-1" id="color"></div>
+            <div class="color-2" id="color"></div>
+        </div>
+        <div class="product-quantity">
+            <div class="q-number" id="q-number" name="quantity">0</div>
+            <div class="q-plus" id="q-plus">+</div>
+            <div class="q-minus" id="q-minus">-</div>
+        </div>
+        <button id="buy-now" class="buy-now">Buy now</button>
+
+    </div>
+</div>
+
+<script>
+    const qNumber = document.getElementById('q-number');
+    const qPlus = document.getElementById('q-plus');
+    const qMinus = document.getElementById('q-minus');
+
+    qPlus.addEventListener('click', () => {
+        qNumber.innerText = parseInt(qNumber.innerText) + 1;
+    });
+
+    qMinus.addEventListener('click', () => {
+        qNumber.innerText = parseInt(qNumber.innerText) - 1;
+    });
+
+    const buyButton = document.getElementById('buy-now');
+    
+    buyButton.addEventListener('click', () => {
+        const price = '<%= product.price %>'
+        const quantity = parseInt(qNumber.innerText)
+        
+        const form = document.createElement('form');
+        form.method = 'POST'
+        form.action = '/checkout'
+
+        const priceInput = document.createElement('input');
+        priceInput.name = 'price';
+        priceInput.value = price;
+        priceInput.type = 'text';
+        form.appendChild(priceInput);
+
+
+        const quantityInput = document.createElement('input');
+        quantityInput.name = 'quantity';
+        quantityInput.value = quantity;
+        priceInput.type = 'text';
+        form.appendChild(quantityInput);
+
+
+        const IDInput = document.createElement('input');
+        IDInput.name = 'ID';
+        IDInput.value = '<%= product.id %>';
+        IDInput.type = 'text';
+        form.appendChild(IDInput);
+
+        document.body.appendChild(form);
+        form.submit();
+
+
+        /*
+        const baseUrl = '/checkout';
+        const params = {
+            id: '<%= product.id %>',
+            price: '<%= product.price %>',
+            quantity: parseInt(qNumber.innerText)
+        }
+
+        axios.get(baseUrl, {params})
+        .then(response => {
+            console.log('success')
+        })
+        .catch(error => {
+            console.log('error');
+        })
+            */
+    });
+
+    
+
+
+
+
+</script>
+
+

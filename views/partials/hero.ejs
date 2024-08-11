@@ -1,0 +1,340 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        /* desktop breakpoint */
+        @media (min-width: 1024px) {
+            .hero-container {
+                height: 100vh;
+                margin: 2vh 1vw;
+                position: relative;
+                overflow-x: hidden;
+                overflow-y: hidden;
+
+            }
+            .hero-image {
+                height: 100%;
+                width: 100%;
+                border-radius: 10px;
+
+            }
+            .hero-image img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                filter: grayscale(60%);
+                border-radius: 10px;
+
+            }
+            .hero-utils {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .hero-utils {
+                position: absolute;
+                top: 10vh;
+                left: 5vw;
+                height: 60vh;
+                width: 95vw;
+
+
+            }
+            .hero-text {
+                text-align: center;
+                font-family: "Space Grotesk", sans-serif;
+                font-size: 80px;
+                font-weight: bold;
+                color: white;
+                margin-top: 15vh;
+                text-shadow: 2px 2px rgba(0,0,0,0.2);
+
+            }
+            .hero-text, .hero-form {
+                width: 95vw;
+            }
+            .hero-form {
+                border: 1px solid rgba(255, 131, 67, 0.5);
+                border-radius: 10px;
+                width: 70vw;
+                height: 15vh;
+                background-color: rgba(255, 131, 67, 0.5);
+                color: white;
+                font-family: "Poppins", sans-serif;
+            }
+            form {
+                margin: 5vh 2vw;
+                cursor: pointer;
+            }
+            .form-wrapper {
+                display: flex;
+                flex-direction: row;
+
+            }
+            .make, .furniture-type, .price, .search-button {
+                margin-left: 1vw;
+                width: 15vw;
+                height: 5vh;
+                text-align: center;
+                border-radius: 5px;
+                cursor: pointer;
+
+            }
+            select {
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                border: 1px solid rgba(255,255,255,0.5);
+                background-color: transparent;
+                color: white;
+                cursor: pointer;
+
+            }
+            input[type=submit] {
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                background-color: white;
+                color: rgba(255, 131, 67, 1);
+                border: 1px solid white;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            
+        }
+        /* tablet breakpoint */
+        @media (min-width: 768px) and (max-width: 1023px) {}
+
+        /* mobile breakpoint */
+        @media (max-width: 767px) {
+            .hero-container {
+                height: 100vh;
+                margin: 2vh 1vw;
+                position: relative;
+                overflow-x: hidden;
+                overflow-y: hidden;
+
+            }
+            .hero-image {
+                height: 100vh;
+                width: 99%;
+                border-radius: 10px;
+                margin: 1vh 1vw;
+                overflow-x: hidden;
+
+            }
+            .hero-image img{
+                height: 100vh;
+                width: 99%;
+                object-fit: cover;
+                filter: grayscale(70%);
+                border-radius: 10px;
+
+            }
+            .hero-utils {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .hero-utils {
+                position: absolute;
+                top: 10vh;
+                left: 5vw;
+                height: 60vh;
+                width: 95vw;
+
+
+            }
+            .hero-text {
+                text-align: left;
+                font-family: "Space Grotesk", sans-serif;
+                font-size: 30px;
+                font-weight: bold;
+                color: white;
+                margin-top: 15vh;
+                padding-left: 3vw;
+                text-shadow: 2px 2px rgba(0,0,0,0.2);
+
+            }
+            .hero-text, .hero-form {
+                width: 95vw;
+            }
+            .hero-form {
+                border: 1px solid rgba(255, 131, 67, 0.5);
+                border-radius: 10px;
+                width: 80vw;
+                height: 60vh;
+                background-color: rgba(255, 131, 67, 0.5);
+                color: white;
+                font-family: "Poppins", sans-serif;
+                margin-top: 5vh;
+                margin-right: 10vw;
+
+            }
+            form {
+                margin: 5vh 2vw;
+                cursor: pointer;
+
+            }
+            .form-wrapper {
+                display: flex;
+                flex-direction: column;
+
+            }
+            .make, .furniture-type, .price, .search-button {
+                margin-left: 0;
+                width: 100%;
+                height: 5vh;
+                text-align: left;
+                border-radius: 5px;
+                cursor: pointer;
+
+            }
+            select {
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                border: 1px solid rgba(255,255,255,0.5);
+                background-color: transparent;
+                color: white;
+                cursor: pointer;
+
+            }
+            input[type=submit] {
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                background-color: white;
+                color: rgba(255, 131, 67, 1);
+                border: 1px solid white;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            .make-parent{
+                width: 100%;
+            }
+
+        }
+
+
+    </style>
+    <div class="hero-container">
+        <div class="hero-image">
+            <img src="/images/hero.jpg" alt="">
+        </div>
+        <div class="hero-utils">
+            <div class="hero-text" id="hero-text">Elegance Redefined.</div>
+            <div class="hero-form" id="hero-form">
+                <form action="">
+                    <div class="form-wrapper">
+
+                        <div class="make-parent">
+                            <label for="make" style="font-size: 12px; text-align: center;margin-left: 1vw;font-weight: bold;">Material</label><br>
+                            <div class="make">
+                                <select id="make" name="make">
+                                    <option value="wood">Wood</option>
+                                    <option value="metal">Metal</option>
+                                    <option value="glass">Glass</option>
+                                    <option value="marble">Marble</option>
+                                    <option value="acrylic">Acrylic</option>
+                                    <option value="wicker">Wicker</option>
+                                    <option value="rattan">Rattan</option>
+                                    <option value="plastic">Plastic</option>
+                                    <option value="bamboo">Bamboo</option>
+                                    <option value="velvet">Velvet</option>
+                                    <option value="linen">Linen</option>
+                                    <option value="concrete">Concrete</option>
+                                  </select>
+                            </div>
+                        
+                        </div>
+                        <div class="make-parent">
+                            <label for="make" style="font-size: 12px; text-align: center;margin-left: 1vw;font-weight: bold;">Select Type</label><br>
+                            <div class="furniture-type">
+
+                                <select id="make" name="make">
+                                    <option value="sofa">Sofa</option>
+                                    <option value="armchair">Armchair</option>
+                                    <option value="coffee-tables">Coffee tables</option>
+                                    <option value="dining-tables">Dining tables</option>
+                                    <option value="bed-frames">Bed frames</option>
+                                    <option value="dressers">Dressers</option>
+                                    <option value="nightstand">Nightstand</option>
+                                    <option value="wardrobe">Wardrobe</option>
+                                    <option value="ottoman">Ottoman</option>
+                                    <option value="patio-furniture">Patio furniture</option>
+                                    <option value="recliner">Recliner</option>
+                                    <option value="desk">Desk</option>
+                                  </select>
+                            </div>
+                        
+                        </div>
+                        <div class="make-parent">
+                            <label for="make" style="font-size: 12px; text-align: center;margin-left: 1vw;font-weight: bold;">Price</label><br>
+                            <div class="price">
+                                <select id="make" name="make">
+                                    <option value="129-359">$129 - $359</option>
+                                    <option value="400-599">$400 - $599</option>
+                                    <option value="650-750">$650 - $750</option>
+                                    <option value="800-900">$800 - $900</option>
+                                    <option value="1000-1999">$1000 - $1999</option>
+                                    <option value="2199-2349">$2199 - $2349</option>
+                                    <option value="2419-2599">$2419 - $2599</option>
+                                    <option value="3300-4099">$3300 - $4099</option>
+                                    <option value="4299-6000">$4299 - $6000</option>
+                                    <option value="6529-7000">$6529 - $7000</option>
+                                  </select>
+                            </div>
+                        
+                        </div>
+                        <div class="make-parent">
+                            <label for="make" style="font-size: 12px; text-align: center;margin-left: 1vw;font-weight: bold;"></label><br>
+
+                            <div class="search-button">
+                                <input type="submit" value="Search">
+
+                            </div>
+                        
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+const heroText = document.getElementById('hero-text');
+const heroForm = document.getElementById('hero-form');
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  gsap.fromTo(".hero-text", 
+        { 
+            y: -100,
+        },
+        { 
+            y: 0,
+            duration: 1
+    });
+    gsap.fromTo(".hero-form", 
+        { 
+            y: -100,
+        },
+        { 
+            y: 0,
+            duration: 1
+    });
+    gsap.fromTo(".hero-image", 
+        { 
+            opacity: 0,
+        },
+        { 
+            opacity: 1,
+            duration: 1
+    });
+});
+
+
+</script>

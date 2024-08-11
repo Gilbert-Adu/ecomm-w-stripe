@@ -1,0 +1,52 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* desktop breakpoint */
+        @media (min-width: 1024px) {
+            .favorite-container {
+                border: 1px solid rgba(0,0,0,0.2);
+                width: 2vw;
+                height: 2.5vh;
+                border-radius: 50%;
+                text-align: center;
+                cursor: pointer;
+                padding-top: 0.7vh;
+                background-color: white;
+                display: flex;
+                flex-direction: row;
+
+            }
+            
+            .highlighted {
+                font-size: 14px;
+                color: red;
+                display: none;
+            }
+        }
+        /* tablet breakpoint */
+        @media (min-width: 768px) and (max-width: 1023px) {}
+
+        /* mobile breakpoint */
+        @media (max-width: 767px) {
+            .favorite-container {
+                border: 1px solid red;
+                width: 5vw;
+                height: 2vh;
+
+
+            }
+        }
+    </style>
+
+</head>
+
+<div class="favorite-container">
+    <div class="heart" id="heart">
+        <i class="fa fa-heart-o"></i>
+    </div>
+    <div class="heart highlighted" id="heart">
+        <i class="fa fa-heart" style="color: red;"></i>
+    </div>
+
+</div>
+

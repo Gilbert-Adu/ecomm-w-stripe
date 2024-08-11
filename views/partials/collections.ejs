@@ -1,0 +1,219 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+        /* desktop breakpoint */
+        @media (min-width: 1024px) {
+            .collections-container {
+                margin: 10vh 1vw;
+                padding-left: 1vw;
+            }
+            .collections-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .collections-text {
+                margin-left: 0;
+                font-family: "Inter";
+                font-size: 45px;
+            }
+            .collections-more {
+                margin-right: 2vw;
+                border: 1px solid rgba(0,0,0,0.2);
+                color: rgba(0,0,0,0.2);
+                padding: 5vh 2vw;
+                border-radius: 100%;
+                font-family: "Poppins";
+                cursor: pointer;
+                transition: color 0.3s ease-in-out, border 0.3s ease-in-out;
+
+
+            }
+            .collections-more:hover {
+                color: rgba(255, 131, 67, 1);
+                border: 1px solid rgba(255, 131, 67, 1);
+            }
+            .collections-products-container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                margin-top: 5vh;
+            }
+            .product-card-wrapper {
+                border: 1px solid #ddd;
+                height: 50vh;
+                width: 30vw;
+                margin-top: 2vh;
+                margin-left: 0;
+                border-radius: 15px;
+                cursor: pointer;
+                text-align: center;
+            }
+            .product-image {
+                width: 100%;
+                height: 100%;
+                border-radius: 15px;
+                position: relative;
+
+
+            }
+            .product-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 15px;
+                position: relative;
+
+                
+            }
+            .product-details-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: absolute;
+                margin-top: 2vh;
+
+            }
+            .details-top{
+                margin-left: 2.5vw;
+                z-index: 5;
+                width: 25vw;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                height: fit-content;
+                font-family: "Poppins", sans-serif;
+                align-items: center;
+
+
+
+            }
+            .details-bottom {
+                z-index: 5;
+                margin-top:35vh;
+                margin-left: 2.5vw;
+                width: 25vw;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                height: fit-content;
+                font-family: "Poppins", sans-serif;
+                align-items: center;
+
+            }
+            .top-left, .bottom-left {
+                margin-left: 0;
+            }
+            .top-right-colors, .bottom-right {
+                margin-right: 0;
+                font-size: 12px;
+            }
+            .product-name{
+                font-size: 12px;
+            }
+            .product-price {
+                font-size: 18px;
+                font-weight: bold;
+                text-align: left;
+            }
+            
+            
+
+            
+        }
+        /* tablet breakpoint */
+        @media (min-width: 768px) and (max-width: 1023px) {}
+
+        /* mobile breakpoint */
+        @media (max-width: 767px) {
+            
+        }
+    </style>
+
+</head>
+
+<div class="collections-container">
+    <div class="collections-header">
+        <div class="collections-text">Our Collections</div>
+        <div class="collections-more">View All</div>
+    </div>
+    <div class="collections-products-container">
+        <% for(let i = 0; i < products.length; i++) { %>
+
+            <!--a product start -->
+
+                <div class="product-card-wrapper">
+                    <div class="product-details-container">
+                        <div class="details-top">
+                            <div class="top-left">
+                                <%- include('./badge', {badgeText: products[i].badge})%>
+    
+                            </div>
+                            <div class="top-right-colors"><%= products[i].numColors %> Colors</div>
+                        </div>
+                        <div class="details-bottom">
+                            <div class="bottom-left">
+                                <div class="product-name"><%= products[i].name %></div>
+                                <div class="product-price">$<%= products[i].price %></div>
+                            </div>
+                            <div class="bottom-right">
+                                    <%- include('./favorite') %>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/product/<%= products[i].id %>" style="color: black;cursor: pointer;">
+
+                    <div class="product-image">
+                        <img src="<%= products[i].imageSrc%>" alt="">
+                    </div>
+                    </a>
+                </div>
+                <!-- a product end -->
+
+            
+       
+
+        <% } %>
+
+        
+        
+
+
+        
+
+
+        
+
+
+    </div>
+</div>
+
+<script>
+    const hearts = document.querySelectorAll('.heart');
+    hearts.forEach((heart) => {
+        heart.addEventListener('click', () => {
+        if (heart.classList.contains('highlighted')){
+
+            heart.classList.remove('highlighted');
+        }else {
+            
+            heart.classList.add('highlighted');
+            heart.style.display = 'block';
+
+
+        }
+    });
+
+    })
+    
+
+    
+</script>
+
+
