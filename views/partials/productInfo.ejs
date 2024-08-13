@@ -145,6 +145,133 @@
 
         /* mobile breakpoint */
         @media (max-width: 767px) {
+            .product-container {
+                display: flex;
+                flex-direction: column;
+                height: fit-content;
+                margin-bottom: 5vh;
+            }
+            .product-card-image{
+                width: 100vw;
+                height: 100%;
+                border-radius: 5px;
+
+            }
+            .product-card-image img{
+                width: 100vw;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 5px;
+
+
+            }
+            .product-card-actions{
+                width: fit-content;
+                height: fit-content;
+                padding: 5vh 5vw;
+
+
+            }
+            .product-title{
+                height: fit-content;
+                font-family: "Inter", sans-serif;
+                font-size: 25px;
+            }
+            .product-desc, .product-avail, .product-colors, .product-quantity, .buy-now{
+                margin-top: 3vh;
+                font-family: "Poppins", sans-serif;
+                font-size: 12px;
+                height: fit-content;
+            }
+            .product-avail {
+                color: #7C00FE;
+                font-weight: bold;
+            }
+            .product-quantity {
+                display: flex;
+                flex-direction: row;
+            }
+            .q-number, .q-plus, .q-minus{
+                margin: 1vh 0;
+                border: 1px solid #ddd;
+                height: 3vh;
+                width: 10vw;
+                text-align: center;
+                padding-top: 1vh;
+
+
+            }
+            .q-plus {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+                background-color: #ddd;
+                margin-right: 0.2vw;
+
+
+            }
+            .q-minus {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+                background-color: #ddd;
+
+
+
+            }
+            .q-number{
+                margin-right: 1vw;
+                border-radius: 5px;
+
+            }
+            
+            .buy-now {
+                height: 5vh;
+                width: 20vw;
+                cursor: pointer;
+                background-color: #3FA2F6;
+                color: white;
+                font-weight: bold;
+                border: 1px solid #3FA2F6;
+                border-radius: 5px;
+            }
+
+            .product-colors {
+                display: flex;
+                flex-direction: row;
+            }
+            .color-1 {
+                background-color: #A02334;
+                border: 1px solid #A02334;
+                height: 1.5vh;
+            }
+            .color-2 {
+                background-color: #399918;
+                border: 1px solid #399918;
+                height: 1.5vh;
+
+            }
+            .color-1, .color-2 {
+                margin: 0 0.1vw;
+                cursor: pointer;
+                width: 3vw;
+                text-align: center;
+                border-radius: 100%;
+                padding: 0.2vh 0.2vw;
+            }
+            .product-cost {
+                font-weight: bold;
+                font-size: 15px;
+                font-family: "Poppins", sans-serif;
+                color: #7C00FE;
+                margin-top: 1vh;
+            }
+            
+
+
+            
             
         }
     </style>

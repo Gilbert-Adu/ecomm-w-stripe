@@ -29,11 +29,22 @@
         /* mobile breakpoint */
         @media (max-width: 767px) {
             .favorite-container {
-                border: 1px solid red;
+                border: 1px solid rgba(0,0,0,0.2);
                 width: 5vw;
-                height: 2vh;
+                height: 2.5vh;
+                border-radius: 50%;
+                text-align: center;
+                cursor: pointer;
+                padding-top: 0.7vh;
+                background-color: white;
+                display: flex;
+                flex-direction: row;
 
-
+            }
+            
+            .highlighted {
+                color: red;
+                display: none;
             }
         }
     </style>
